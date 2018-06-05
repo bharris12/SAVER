@@ -182,9 +182,6 @@ saver.fit <- function(x, x.est, do.fast, sf, scale.sf, pred.genes, pred.cells,
                              coefs = NULL, sf, scale.sf,
                              gene.names[pred.genes], pred.cells,
                              null.model = TRUE, nworkers, calc.maxcor = FALSE)
-        if (debug) {
-          return(out)
-        }
         est[ind5, ] <- out$est
         se[ind5, ] <- out$se
         for (j in 1:6) {
@@ -209,6 +206,9 @@ saver.fit <- function(x, x.est, do.fast, sf, scale.sf, pred.genes, pred.cells,
     out <- calc.estimate(x[ind4, , drop = FALSE], x.est, cutoff2, coefs, sf,
                          scale.sf, gene.names[pred.genes], pred.cells,
                          null.model, nworkers, calc.maxcor = TRUE)
+    if (debug) {
+      return(out)
+    }
 
     est[ind4, ] <- out$est
     se[ind4, ] <- out$se
