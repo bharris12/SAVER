@@ -205,7 +205,8 @@ saver.fit <- function(x, x.est, do.fast, sf, scale.sf, pred.genes, pred.cells,
     message("Predicting ", length(ind4), " genes.")
     out <- calc.estimate(x[ind4, , drop = FALSE], x.est, cutoff2, coefs, sf,
                          scale.sf, gene.names[pred.genes], pred.cells,
-                         null.model, nworkers, calc.maxcor = TRUE)
+                         null.model, nworkers, calc.maxcor = TRUE,
+                         debug = debug)
     if (debug) {
       return(out)
     }
