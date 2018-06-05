@@ -89,7 +89,8 @@
 #' @export
 saver <- function(x, do.fast = TRUE, size.factor = NULL, npred = NULL,
                   pred.cells = NULL, pred.genes = NULL,
-                  pred.genes.only = FALSE, null.model = FALSE, mu = NULL) {
+                  pred.genes.only = FALSE, null.model = FALSE, mu = NULL,
+                  debug = FALSE) {
   if (!is.null(mu)) {
     mu <- check.mu(x, mu)
   }
@@ -132,7 +133,7 @@ saver <- function(x, do.fast = TRUE, size.factor = NULL, npred = NULL,
 
   out <- saver.fit(x, x.est, do.fast, sf, scale.sf, pred.genes, pred.cells,
                    null.model, ngenes = nrow(x), ncells = ncol(x), gene.names,
-                   cell.names)
+                   cell.names, debug = debug)
   class(out) <- "saver"
   message("Done!")
   out
