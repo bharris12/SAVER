@@ -139,6 +139,9 @@ calc.estimate <- function(x, x.est, cutoff = 0, coefs = NULL, sf, scale.sf,
       list(est, se, maxcor, lambda.max, lambda.min, sd.cv, ct, vt)
     }
   )
+  if (debug) {
+    return(out)
+  }
   setTxtProgressBar(pb, reps*iterx$chunksize+1)
   cat("\n")
   est <- do.call(rbind, lapply(out, `[[`, 1))
