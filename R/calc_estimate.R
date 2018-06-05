@@ -64,6 +64,9 @@ calc.estimate <- function(x, x.est, cutoff = 0, coefs = NULL, sf, scale.sf,
                           pred.gene.names, pred.cells, null.model, nworkers,
                           calc.maxcor, debug = FALSE) {
   cs <- min(ceiling(nrow(x)/nworkers), get.chunk(nrow(x), nworkers))
+  if (debug) {
+    cs <- 1
+  }
   iterx <- iterators::iter(x, by = "row", chunksize = cs)
   itercount <- iterators::icount(ceiling(iterx$length/iterx$chunksize))
   reps <- ceiling(ceiling(iterx$length/iterx$chunksize)/nworkers)
