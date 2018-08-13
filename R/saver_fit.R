@@ -71,7 +71,6 @@ saver.fit <- function(x, x.est, do.fast, sf, scale.sf, pred.genes, pred.cells,
   } else {
     message("Using means as predictions.")
   }
-  set.seed(1)
   st <- Sys.time()
   if (npred1 < ngenes) {
     ind <- c(sample(pred.genes1, npred1), sample((1:ngenes)[-pred.genes1],
@@ -304,7 +303,6 @@ saver.fit.mean <- function(x, sf, scale.sf, mu, ngenes = nrow(x),
   nworkers <- foreach::getDoParWorkers()
   message("Running SAVER given prior means with ", nworkers, " worker(s)")
 
-  set.seed(1)
   st <- Sys.time()
   out <- calc.estimate.mean(x, sf, scale.sf, mu, nworkers)
   ind <- 1:ngenes
